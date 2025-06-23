@@ -10,6 +10,7 @@ import { QuizState } from './types/quiz';
 import { useConfetti } from './hooks/useConfetti';
 import { useKeyboard } from './hooks/useKeyboard';
 import { Brain, Code2, Sparkles } from 'lucide-react';
+import EzberPaneli from './components/EzberPaneli';
 
 function App() {
   const [quizState, setQuizState] = useState<QuizState>({
@@ -24,6 +25,7 @@ function App() {
   const [aiMessage, setAiMessage] = useState("Merhaba! Programlama sorularını çözmeye hazır mısın? Başlayalım! 🚀");
   const [aiMood, setAiMood] = useState<'neutral' | 'happy' | 'encouraging' | 'excited'>('neutral');
   const [lastAnswerCorrect, setLastAnswerCorrect] = useState<boolean | null>(null);
+  const [ezberOpen, setEzberOpen] = useState(false);
 
   const { fireConfetti, fireSimpleConfetti } = useConfetti();
   
@@ -184,7 +186,14 @@ function App() {
       <div className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative px-6 py-8">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center relative">
+            {/* Ezberle Butonu */}
+            <button
+              onClick={() => setEzberOpen(true)}
+              className="absolute top-0 right-0 mt-2 mr-2 bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold px-4 py-2 rounded-xl shadow-lg z-10"
+            >
+              Ezberle
+            </button>
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -272,6 +281,9 @@ function App() {
         <div>← → : Gezinme | H: İpucu</div>
         <div>1-4: Seçenekler | T/F: Doğru/Yanlış</div>
       </div>
+
+      {/* Ezber Paneli */}
+      <EzberPaneli open={ezberOpen} onClose={() => setEzberOpen(false)} />
     </div>
   );
 }

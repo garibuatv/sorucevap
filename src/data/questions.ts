@@ -98,13 +98,12 @@ export const questions: Question[] = [
     type: 'multiple-choice',
     question: 'Görseldeki tabloya göre, aşağıdaki sorgunun dönüşü aşağıdakilerden hangisidir?\nSELECT Urun, AVG(Adet) AS Miktar FROM Musteriler GROUP BY Urun;',
     options: [
-      'Mouse 3, HDMI Kablo 5',
       'Mouse 4, HDMI Kablo 3',
       'Mouse 3,4, HDMI Kablo 5',
       'Mouse 3, HDMI Kablo 5',
       'Webcam 5'
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     hint: 'Her ürün için ortalama adet bulunur.'
   },
   {
